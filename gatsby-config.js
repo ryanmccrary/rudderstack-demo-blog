@@ -128,5 +128,77 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+    resolve: `gatsby-plugin-rudderstack`,
+    options: {
+      // your rudderstack write key for your production environment
+      // when process.env.NODE_ENV === 'production'
+      // required; non-empty string
+      //NOTE: Do not commit this to git. Process from env.
+      prodKey: `25WjMTuJEZeXbgC0Dn0pqlxJBid`,
+
+      // if you have a development env for your rudderstack account, paste that key here
+      // when process.env.NODE_ENV === 'development'
+      // optional; non-empty string
+      //NOTE: Do not commit this to git. Process from env.
+      devKey: `25WjMTuJEZeXbgC0Dn0pqlxJBid`,
+
+      // boolean (defaults to false) on whether you want
+      // to include analytics.page() automatically
+      // if false, see below on how to track pageviews manually
+      trackPage: true,
+
+      // number (defaults to 50); time to wait after a route update before it should
+      // track the page change, to implement this, make sure your `trackPage` property is set to `true`
+      trackPageDelay: 50,
+
+      // If you need to proxy events through a custom data plane,
+      // add a `dataPlaneUrl` property (defaults to https://hosted.rudderlabs.com )
+      // RudderStack docs:
+      //   - https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#3-1-load
+      dataPlaneUrl: `https://rudderstac.dataplane.rudderstack.com/`,
+
+      // Add a `controlPlaneUrl` property if you are self-hosting the Control Plane
+      // RudderStack docs:
+      //   - https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#3-1-1-self-hosted-control-plane
+      // controlPlaneUrl: `https://override-control-plane-url`,
+
+      // boolean (defaults to false); whether to delay load RudderStack
+      // ADVANCED FEATURE: only use if you leverage client-side routing (ie, Gatsby <Link>)
+      // This feature will force RudderStack to load _after_ either a page routing change
+      // or user scroll, or after `delayLoadTime` elapses, whichever comes first. This feature is used to help improve your website's
+      // TTI (for SEO, UX, etc).  See links below for more info.
+      // NOTE: But if you are using server-side routing and enable this feature,
+      // RudderStack will never load (because although client-side routing does not do
+      // a full page refresh, server-side routing does, thereby preventing RudderStack
+      // from ever loading).
+      // See here for more context:
+      // GIF: https://github.com/benjaminhoffman/gatsby-plugin-segment/pull/19#issuecomment-559569483
+      // TTI: https://github.com/GoogleChrome/lighthouse/blob/master/docs/scoring.md#performance
+      // Problem/solution: https://marketingexamples.com/seo/performance
+      delayLoad: false,
+
+      // number (default to 1000); time to wait after the page loads
+      // to load the RudderStack SDK
+      // To be used when `delayLoad` is set to `true`
+      // delayLoadTime: 1000
+
+      // Whether to completely skip calling `analytics.load()`.
+      // ADVANCED FEATURE: only use if you are calling `analytics.load()` manually
+      // elsewhere in your code or are using a library
+      // that will call it for you.
+      // Useful for only loading the tracking script once a user has opted in to being tracked, for example.
+      // *Another use case is if you want to add callbacks to the methods at load time.
+      manualLoad: false,
+
+      useNewSDK: true,
+
+      // string ('async' or 'defer'); whether to load the RudderStack SDK async or defer. Anything else
+      // will load normally.
+      // 'async' will load the SDK as <script async></script>
+      // 'defer' will load the SDK as <script defer></script>
+      loadType: 'default'
+    }
+  }
   ],
 }
