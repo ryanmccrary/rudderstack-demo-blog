@@ -23,6 +23,20 @@ const BlogIndex = ({ data, location }) => {
     )
   }
 
+  const sendConversion = () => {
+    let val = document.getElementById('form_submit').value
+    console.log("RudderStack identify and track with ->", val)
+
+    window.rudderanalytics.identify(val.trim().toLowerCase())
+
+    window.rudderanalytics.track('form_submit', {
+      category: 'form_submission',
+      label: 'newsletter subscription'})
+
+    document.getElementById('form_submit').value = ""
+  }
+
+
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="All posts" />
@@ -58,7 +72,9 @@ const BlogIndex = ({ data, location }) => {
             </li>
           )
         })}
-      </ol>
+          </ol>
+          <input id='form_submit'></input>
+        <button onClick={sendConversion}>Join Newsletter</button>
     </Layout>
   )
 }
