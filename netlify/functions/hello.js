@@ -13,7 +13,7 @@ exports.handler = async function (event, context) {
   try {
     response = await fetch(TEST_API_ENDPOINT)
     // handle response
-    let rudderPayload = {"email": response.data[1].email}
+    let rudderPayload = {"email": response.json().data[1].email}
     let rudderResponse
     try {
       rudderResponse = await fetch(TEST_RUDDER_ENDPOINT,{
