@@ -67,9 +67,6 @@ exports.handler = async function (event, context) {
   // return rudderstack response to big commerce
   return {
     statusCode: 200,
-    body: JSON.stringify({
-      data: rudderResponse
-    })
   }
 
 }
