@@ -16,10 +16,10 @@ exports.handler = async function (event, context) {
     let rudderPayload = {response}
     let rudderResponse
 
-    return {
-      statusCode: 200,
-      JSON.stringify({body: response})
-    }
+    // return {
+    //   statusCode: 200,
+    //   JSON.stringify({body: response})
+    // }
     // try {
     //   rudderResponse = await fetch(TEST_RUDDER_ENDPOINT,{
     //     method: "POST",
@@ -68,10 +68,9 @@ exports.handler = async function (event, context) {
   //     })
   //   }
   // }
-
-  // return rudderstack response to big commerce
-  // return {
-  //   statusCode: 200,
-  // }
+  return {
+    statusCode: 200,
+    JSON.stringify({body: response})
+  }
 
 }
