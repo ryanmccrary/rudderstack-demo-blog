@@ -18,7 +18,7 @@ exports.handler = async function (event, context) {
 
     return {
       statusCode: 200,
-      body: response
+      JSON.stringify({body: response})
     }
     // try {
     //   rudderResponse = await fetch(TEST_RUDDER_ENDPOINT,{
