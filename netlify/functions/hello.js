@@ -15,19 +15,24 @@ exports.handler = async function (event, context) {
     // handle response
     let rudderPayload = {response}
     let rudderResponse
-    try {
-      rudderResponse = await fetch(TEST_RUDDER_ENDPOINT,{
-        method: "POST",
-        body: rudderPayload
-      })
-    } catch (err) {
-      return {
-        statusCode: err.statusCode || 500,
-        body: JSON.stringify({
-          error: err.message
-        })
-      }
+
+    return {
+      statusCode: 200,
+      body: response
     }
+    // try {
+    //   rudderResponse = await fetch(TEST_RUDDER_ENDPOINT,{
+    //     method: "POST",
+    //     body: rudderPayload
+    //   })
+    // } catch (err) {
+    //   return {
+    //     statusCode: err.statusCode || 500,
+    //     body: JSON.stringify({
+    //       error: err.message
+    //     })
+    //   }
+    // }
   } catch (err) {
     return {
       statusCode: err.statusCode || 500,
@@ -65,8 +70,8 @@ exports.handler = async function (event, context) {
   // }
 
   // return rudderstack response to big commerce
-  return {
-    statusCode: 200,
-  }
+  // return {
+  //   statusCode: 200,
+  // }
 
 }
