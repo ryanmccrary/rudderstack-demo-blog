@@ -12,27 +12,7 @@ exports.handler = async function (event, context) {
   let response
   try {
     response = await fetch(TEST_API_ENDPOINT)
-    // handle response
-    let rudderPayload = {response}
-    let rudderResponse
 
-    // return {
-    //   statusCode: 200,
-    //   JSON.stringify({body: response})
-    // }
-    // try {
-    //   rudderResponse = await fetch(TEST_RUDDER_ENDPOINT,{
-    //     method: "POST",
-    //     body: rudderPayload
-    //   })
-    // } catch (err) {
-    //   return {
-    //     statusCode: err.statusCode || 500,
-    //     body: JSON.stringify({
-    //       error: err.message
-    //     })
-    //   }
-    // }
   } catch (err) {
     return {
       statusCode: err.statusCode || 500,
